@@ -44,8 +44,8 @@ def add_enrollment(enrl: CreateEnrollment):
     enrollment = enroll_student(enrl.student_id, enrl.course_id, enrl.enrollment_date)
     return {"message": "the following enrollment has been successfully created:",
             "course": {"student_name": enrollment["student_name"], "course_name": enrollment["course_name"], "enrollment_date": enrollment["enrollment_date"]}}
-@app.delete("/enrollments")
-def delete_enrll(enrl: Enrollment_by_id):
-    enrollment = delete_enrollment(enrl.id)
+@app.delete("/enrollments/{enrl_id}")
+def delete_enrll(enrl_id: int):
+    enrollment = delete_enrollment(enrl_id)
     return {"message": "the following enrollment has been successfully deleted:",
             "enrollment_details": enrollment}
